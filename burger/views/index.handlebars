@@ -1,0 +1,5 @@
+<h1>Burgers!</h1>
+
+<ul>
+    {{#each burger}} {{#unless devoured}} {{> burgers/burger-block devoured=false}} {{/unless}} {{/each}}
+</ul>
