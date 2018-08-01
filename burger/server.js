@@ -1,5 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
+var methodOverride = require("method-override");
 
 var PORT = process.env.PORT || 8080;
 
@@ -14,7 +15,7 @@ app.use(bodyParser.urlencoded( {extended: true}));
 
 app.use(bodyParser.json());
 
-
+app.use(methodOverride('_method'))
 var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs ({ defaultLayout: "main"}));
@@ -32,6 +33,9 @@ app.get("/", function (req, res) {
         res.render("index", hbsObject);
     });
 });
+
+app.use(routes);
+
 
 app.listen(PORT, function(){
     console.log("Server listening on: http://localhost: " + PORT)

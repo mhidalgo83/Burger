@@ -1,3 +1,9 @@
 .column{
-    font-size: 30px;
+    font-size: 20px;
+    flex: 50%;
+}
+
+.row{
+    display: flex;
+    
 }

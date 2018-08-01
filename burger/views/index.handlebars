@@ -2,9 +2,14 @@
     <div class="column">
         <h1>Burgers!</h1>
         <ul>
-            {{#each burgers}} {{#unless this.devoured}}
+            {{#each burgers}} {{#unless this.is_devoured}}
             <li>{{this.burger_name}}
-                <button type="change-devoured" data-id " = {{id}}">EAT IT!!</button>
+                <span class="input-group-btn">
+                    <form action="api/burgers/{{this.id}}?_method=PUT" method="POST">
+                        <input type="hidden" name="is_devoured" value="true">
+                        <button class="btn btn-default btn-lg" type="submit"> EAT IT! </button>
+                    </form>
+                </span>
             </li>
             {{/unless}} {{/each}}
         </ul>
@@ -12,7 +17,7 @@
     <div class="column">
         <h1>DEVOURED!!!</h1>
         <ul>
-            {{#each burgers}} {{#if this.devoured}}
+            {{#each burgers}} {{#if this.is_devoured}}
             <li>
                 {{this.burger_name}}
             </li>
