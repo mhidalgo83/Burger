@@ -20,9 +20,18 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs ({ defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
-var routes = require("./burger/controllers/burgers_controllers.js");
+var routes = require("./controllers/burgers_controllers.js");
+var burger = require("./models/burger.js");
 
-app.use(routes);
+app.get("/", function (req, res) {
+    burger.all(function (data) {
+        var hbsObject = {
+            burgers: data
+        };
+        console.log(hbsObject);
+        res.render("index", hbsObject);
+    });
+});
 
 app.listen(PORT, function(){
     console.log("Server listening on: http://localhost: " + PORT)
