@@ -9,17 +9,3 @@ VALUES ("Black Bean Burger", false);
 INSERT INTO burgers (burger_name, is_devoured)
 VALUES ("California Club Burger", false);
 
-INSERT INTO burgers (burger_name, is_devoured)
-VALUES ("California Club Burger", false);
-
-INSERT INTO burgers (burger_name, is_devoured)
-VALUES ("California Club Burger", false);
-
-INSERT INTO burgers (burger_name, is_devoured)
-VALUES ("California Club Burger", false);
-
-INSERT INTO burgers (burger_name, is_devoured)
-VALUES ("California Club Burger", false);
-
-INSERT INTO burgers (burger_name, is_devoured)
-VALUES ("California Club Burger", false);
