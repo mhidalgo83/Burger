@@ -3,7 +3,8 @@
         <h1>Burgers!</h1>
         <ul>
             {{#each burgers}} {{#unless this.is_devoured}}
-            <li>{{this.burger_name}}
+            <li>
+                <p>{{this.burger_name}}</p>
                 <span class="input-group-btn">
                     <form action="api/burgers/{{this.id}}?_method=PUT" method="POST">
                         <input type="hidden" name="is_devoured" value="true">
@@ -25,3 +26,8 @@
         </ul>
     </div>
 </div>
+<h2>Add A Burger</h2>
+<form method="POST" action="/api/burgers">
+    <textarea type="text" name="burger_name"></textarea>
+    <button type="submit">Add Burger</button>
+</form>

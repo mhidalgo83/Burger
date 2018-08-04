@@ -2,8 +2,9 @@ var express = require("express");
 
 var router = express.Router();
 
-router.get('/', function(req, res){
-	res.redirect('/')
+
+router.get('/', function (req, res) {
+    res.redirect('/')
 });
 
 var burger = require("../models/burger.js");
@@ -21,12 +22,13 @@ router.get("/", function (req, res) {
 
 router.post("/api/burgers", function (req, res) {
     burger.create([
-        "name", "is_devoured"
+        "burger_name"
     ],
-        [req.body.name, req.body.is_devoured],
+        [req.body.burger_name],
         function (result) {
-            res.json({ id: result.insertId });
+            res.redirect("/");
         });
+    
 });
 
 router.put("/api/burgers/:id", function (req, res) {
@@ -37,11 +39,6 @@ router.put("/api/burgers/:id", function (req, res) {
     burger.update({
         is_devoured: req.body.is_devoured
     }, condition, function (result) {
-        if (result.changedRows == 0) {
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
-        }
         res.redirect("/");
     });
 });
